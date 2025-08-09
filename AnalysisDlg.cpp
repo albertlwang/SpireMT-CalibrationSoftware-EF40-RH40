@@ -1,4 +1,16 @@
-// AnalysisDlg.cpp : implementation file
+// AnalysisDlg.cpp
+//
+//   This file implements the CAnalysisDlg dialog class, which is part of the
+//   calibration application. The dialog is responsible for displaying and
+//   analyzing calibration results for meters, including reading data from a
+//   database, performing calculations, and updating the UI with results.
+//     - Connects to a database to retrieve and update calibration data.
+//     - Populates a list control with meter information and analysis results.
+//     - Calculates scale factors and errors for each meter.
+//     - Provides user interaction for checking results and viewing error details.
+//     - Supports multi-language UI (Chinese/English) based on application settings.
+//     - Handles COM exceptions and ensures proper resource cleanup.
+//
 //
 
 #include "stdafx.h"

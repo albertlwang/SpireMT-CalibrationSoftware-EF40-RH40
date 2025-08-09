@@ -1,3 +1,23 @@
+/**
+ * @file SetDlg.h
+ * @brief Declaration of the CSetDlg dialog class for meter parameter configuration.
+ *
+ * This dialog is used for setting and editing various parameters related to meter calibration and configuration.
+ * It provides UI controls for entering and modifying meter settings, supports batch operations, and interacts
+ * with the application's database using ADO. The dialog also manages serial communication with the meter device.
+ *
+ * Dependencies:
+ * - Serial communication protocol: Some dialog actions (such as parameter setting, quick set, and batch operations)
+ *   depend on the current meter's serial protocol. If the protocol changes, methods that send commands to the meter
+ *   (e.g., OnM11, OnM12, OnQuickSet, OnMulset, etc.) may require updates to match the new protocol's command structure.
+ * - Database: Uses ADO (_ConnectionPtr, _RecordsetPtr) for reading and writing meter configuration data.
+ *
+ * Note for future developers:
+ * - If supporting a new meter or protocol, review all message handlers that interact with the meter via serial port.
+ *   Update command formats and parsing logic as needed.
+ * - UI control variables (e.g., m_m11, m_m12, etc.) are mapped to dialog fields for user input.
+ */
+
 #if !defined(AFX_SETDLG_H__03D8720A_111E_40CD_8344_5DA8359FBB17__INCLUDED_)
 #define AFX_SETDLG_H__03D8720A_111E_40CD_8344_5DA8359FBB17__INCLUDED_
 
@@ -11,27 +31,34 @@
 /////////////////////////////////////////////////////////////////////////////
 // CSetDlg dialog
 
+/**
+ * @class CSetDlg
+ * @brief Dialog for configuring meter parameters and sending commands to the meter.
+ *
+ * Provides UI and logic for setting individual and batch meter parameters, interacting with the database,
+ * and communicating with the meter device over a serial connection.
+ */
 class CSetDlg : public CDialog
 {
 // Construction
 public:
-	CFont g_font;
-	CString m_meterno;   //表号
-	CString str; 
-	CString str1;
-	CLineArrayDlg line_array;
+	CFont g_font;                ///< Font used for dialog controls
+	CString m_meterno;           ///< Meter number
+	CString str;                 ///< General-purpose string buffer
+	CString str1;                ///< General-purpose string buffer
+	CLineArrayDlg line_array;    ///< Dialog for line array operations
 
-	_ConnectionPtr m_pAppConn; //连接对象指针 
-	_RecordsetPtr  m_recordset;
+	_ConnectionPtr m_pAppConn;   ///< ADO connection pointer for database access
+	_RecordsetPtr  m_recordset;  ///< ADO recordset pointer for database operations
 
-	int leixing;
-	CString jiaodu;
-	CString shengsu;
-	CString juli;
-	CString shijian;
-	int pinlv;
-	int fangfa;
-	CString xishu;
+	int leixing;                 ///< Meter type
+	CString jiaodu;              ///< Angle parameter
+	CString shengsu;             ///< Speed parameter
+	CString juli;                ///< Distance parameter
+	CString shijian;             ///< Time parameter
+	int pinlv;                   ///< Frequency parameter
+	int fangfa;                  ///< Method parameter
+	CString xishu;               ///< Coefficient parameter
 
 	CSetDlg(CWnd* pParent = NULL);   // standard constructor
 // Dialog Data

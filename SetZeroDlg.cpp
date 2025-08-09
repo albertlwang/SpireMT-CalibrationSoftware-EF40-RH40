@@ -1,4 +1,18 @@
-// SetZeroDlg.cpp : implementation file
+// SetZeroDlg.cpp
+//
+//   This file implements the CSetZeroDlg dialog, which is responsible for handling the
+//   "Zero Setting and Flow Rate Debugging" functionality in the calibration application.
+//   The dialog allows users to set zero points, collect flow rate data at various levels
+//   (high, medium, low), and perform calibration operations. It interacts with the database
+//   to retrieve and store calibration data, communicates with external hardware via serial
+//   port, and manages UI elements for both English and Chinese locales.
+//
+// Key Features:
+//   - Provides UI for setting zero points and flow cutoff values.
+//   - Collects and displays flow rate data from connected meters.
+//   - Handles database operations for calibration data storage and retrieval.
+//   - Manages serial communication with external meter devices.
+//   - Supports threaded operations for data collection and device communication.
 //
 
 #include "stdafx.h"

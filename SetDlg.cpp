@@ -1,5 +1,11 @@
 // SetDlg.cpp : implementation file
 //
+// This file implements the CSetDlg dialog class, which provides the user interface
+// for configuring calibration and meter settings in the application. The dialog
+// supports both English and Chinese localizations, and dynamically updates UI
+// elements based on the selected language. It also manages font settings and
+// handles various user interactions through message map functions.
+
 
 #include "stdafx.h"
 #include "Calibration.h"
@@ -17,6 +23,10 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CSetDlg dialog
 
+/**
+ * @brief Constructs a CSetDlg dialog.
+ * @param pParent Pointer to the parent window (default is NULL).
+ */
 
 CSetDlg::CSetDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CSetDlg::IDD, pParent)
@@ -35,6 +45,10 @@ CSetDlg::CSetDlg(CWnd* pParent /*=NULL*/)
 	//}}AFX_DATA_INIT
 }
 
+/**
+ * @brief Handles data exchange between UI controls and member variables.
+ * @param pDX Pointer to the data exchange object.
+ */
 
 void CSetDlg::DoDataExchange(CDataExchange* pDX)
 {

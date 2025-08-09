@@ -1,5 +1,12 @@
 // CalibrationDlg.cpp : implementation file
 //
+// This file implements the CCalibrationDlg dialog and related functionality for the calibration application.
+// It handles dialog initialization, serial port communication, database setup, and user interactions.
+// - Enumerates available COM ports and populates the combo box.
+// - Initializes and manages the application's database using ADO.
+// - Handles serial port open/close and baud rate auto-detection.
+// - Provides UI event handlers for calibration, installation, and meter search operations.
+// - Supports multi-language UI switching and dynamic font assignment.
 
 #include "stdafx.h"
 #include <windows.h>
@@ -490,7 +497,7 @@ void CCalibrationDlg::OnOpenComm()
 			}
 		}
 	}
-	OnBaudAuto(); //set Baud rate to Calibration mode 9600;none;8;2
+	OnBaudAuto(); //set Baud rate to Calibration mode 9600;none;8;1
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
 void CCalibrationDlg::OnSet() 
@@ -738,7 +745,7 @@ void CCalibrationDlg::OnSearchMeter()
 				i %= (int)pow(10.0, len - j);
 			}
 			//str += CString(0x45) + CString(0x53) + CString(0x4e) + CString(0x0d);
-			str += "\x45\x53\x4e\x0d";//ESN(cr)
+			str += "\x45\x53\x4e\x0d"; //ESN(cr)
 
 			app->g_com.Write(str);
 			str = "";

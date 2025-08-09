@@ -1,5 +1,18 @@
 // Calibration.cpp : Defines the class behaviors for the application.
 //
+// This file implements the main entry point and application logic for the CALIBRATION tool.
+// It initializes the application, sets up OLE and MFC controls, and launches the main dialog.
+// The application is designed to calibrate up to 20 meters, communicating with them via serial port
+// using the protocol supported by the CnComm class. The dialog (CalibrationDlg) handles user interaction
+// and calibration workflow. Logging and date/time utilities are present but commented out.
+//
+// Serial communication protocol dependencies:
+// - The application expects meters to be connected via a serial port and to support the protocol
+//   implemented in CnComm (see Calibration.h for details).
+// - The COM port is selected and managed in the application state.
+// - Meter data is exchanged using the Meter_Info and nowflux structures.
+//
+// For further details, see Calibration.h and CalibrationDlg.h/.cpp.
 
 #include "stdafx.h"
 #include "Calibration.h"
@@ -14,6 +27,7 @@ static char THIS_FILE[] = __FILE__;
 
 /////////////////////////////////////////////////////////////////////////////
 // CCalibrationApp
+// Main application class for the CALIBRATION tool.
 
 BEGIN_MESSAGE_MAP(CCalibrationApp, CWinApp)
 	//{{AFX_MSG_MAP(CCalibrationApp)
@@ -23,6 +37,7 @@ END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CCalibrationApp construction
+// Constructor for the main application class.
 
 CCalibrationApp::CCalibrationApp()
 {
@@ -32,11 +47,13 @@ CCalibrationApp::CCalibrationApp()
 
 /////////////////////////////////////////////////////////////////////////////
 // The one and only CCalibrationApp object
+// Global instance of the application.
 
 CCalibrationApp theApp;
 
 /////////////////////////////////////////////////////////////////////////////
 // CCalibrationApp initialization
+// Initializes OLE, MFC controls, and launches the main dialog.
 
 BOOL CCalibrationApp::InitInstance()
 {
